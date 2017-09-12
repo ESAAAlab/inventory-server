@@ -7,8 +7,8 @@
   "author": "Kamel Makhloufi",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3000 babel-node ./bin/www",
-    "watch": "PORT=3000 nodemon --exec babel-node ./bin/www --delay 3000ms"
+    "start": "PORT=3000 ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www",
+    "watch": "PORT=3000 ./node_modules/nodemon/bin/nodemon.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www --delay 3000ms"
   },
   "apidoc": {
     "title": "Inventory management API documentation",
@@ -26,16 +26,16 @@
     "pg": "^6.1.5",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.30.4",
-    "serve-favicon": "^2.4.2"
+    "serve-favicon": "^2.4.2",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1"
   },
   "devDependencies": {
     "apidoc": "^0.17.6",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.3.0",
+    "babel-eslint": "^7.2.3",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-plugin-html": "^3.1.1",
