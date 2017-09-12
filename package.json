@@ -7,8 +7,8 @@
   "author": "Kamel Makhloufi",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3000 babel-node ./bin/www",
-    "watch": "PORT=3000 nodemon --exec babel-node ./bin/www --delay 3000ms"
+    "start": "PORT=3000 babel-node --presets env,stage-0 ./bin/www",
+    "watch": "PORT=3000 nodemon --exec babel-node --presets env,stage-0 ./bin/www --delay 3000ms"
   },
   "apidoc": {
     "title": "Inventory management API documentation",

@@ -1,5 +1,3 @@
-#!/usr/bin/env babel-node --presets env,stage-0
-
 /**
  * Module dependencies.
  */
