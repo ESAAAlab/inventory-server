@@ -1,2 +1,2 @@
-#ignore the imgs for docs
-/img/
+node_modules
+/docs/

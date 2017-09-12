@@ -1,0 +1,423 @@
+[
+  {
+    "model": "studentYear",
+    "data": {
+      "year":0,
+      "description":"Classe Préparatoire"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":1,
+      "description":"1ère Année"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":2,
+      "section":"Art",
+      "description":"2ème Art"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":2,
+      "section":"Design",
+      "description":"2ème Design"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":3,
+      "section":"Art",
+      "description":"3ème Art"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":3,
+      "section":"Design",
+      "description":"3ème Design"
+    }
+  },{
+    "model": "studentYear",
+    "data": {
+      "year":4,
+      "section":"Art",
+      "description":"4ème Art"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":4,
+      "section":"Design",
+      "description":"4ème Design"
+    }
+  },{
+    "model": "studentYear",
+    "data": {
+      "year":5,
+      "section":"Art",
+      "description":"5ème Art"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "year":5,
+      "section":"Design",
+      "description":"5ème Design"
+    }
+  },
+  {
+    "model": "studentYear",
+    "data": {
+      "description":"Indéfinie"
+    }
+  },  
+  {
+    "model": "userType",
+    "data": {
+      "description":"Étudiant"
+    }
+  },
+  {
+    "model": "userType",
+    "data": {
+      "description":"Intervenant"
+    }
+  },
+  {
+    "model": "userType",
+    "data": {
+      "description":"Professeur"
+    }
+  },
+  {
+    "model": "userType",
+    "data": {
+      "description":"Public Extérieur"
+    }
+  },
+  {
+    "model": "userType",
+    "data": {
+      "description":"Amateur"
+    }
+  },
+  {
+    "model": "userType",
+    "data": {
+      "description":"Technicien"
+    }
+  },
+  {
+    "model": "userType",
+    "data": {
+      "description":"Autre Employé"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Son"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Video"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Photo"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Electroportatif"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Outillage à main"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Quincaillerie"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Consommables"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Enregistreur",
+      "parentId":"1"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Micro HF",
+      "parentId":"1"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Micro Filaire",
+      "parentId":"1"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Table de mixage",
+      "parentId":"1"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Enceinte",
+      "parentId":"1"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Controlleur MIDI",
+      "parentId":"1"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Camera",
+      "parentId":"2"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Vidéoprojecteur",
+      "parentId":"2"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Lecteur Multimedia",
+      "parentId":"2"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Cable",
+      "parentId":"2"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Appareil Photo",
+      "parentId":"3"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Objectif",
+      "parentId":"3"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Trepied",
+      "parentId":"3"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Visseuse",
+      "parentId":"4"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Perceuse / Perfo",
+      "parentId":"4"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Ponceuse",
+      "parentId":"4"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Disqueuse",
+      "parentId":"4"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Outil Rotatif",
+      "parentId":"4"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Multifonction",
+      "parentId":"4"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Tournevis",
+      "parentId":"5"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Marteau",
+      "parentId":"5"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Clé",
+      "parentId":"5"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Truelle",
+      "parentId":"5"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Peinture",
+      "parentId":"5"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Vis Metal",
+      "parentId":"6"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Ecrou",
+      "parentId":"6"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Rondelle",
+      "parentId":"6"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"VBA",
+      "parentId":"6"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Charnière",
+      "parentId":"6"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Forêt",
+      "parentId":"7"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Meche",
+      "parentId":"7"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Papier de verre",
+      "parentId":"7"
+    }
+  },
+  {
+    "model": "itemCategory",
+    "data": {
+      "description":"Disque abrasif",
+      "parentId":"7"
+    }
+  },
+  {
+    "model": "itemLocation",
+    "data": {
+      "description":"Reserve Photo / Video"
+    }
+  },
+  {
+    "model": "itemLocation",
+    "data": {
+      "description":"Reserve Outillage"
+    }
+  },
+  {
+    "model": "itemLocation",
+    "data": {
+      "description":"Studio Son"
+    }
+  },
+  {
+    "model": "itemLocation",
+    "data": {
+      "description":"FabLab"
+    }
+  }
+]

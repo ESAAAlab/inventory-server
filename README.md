@@ -1,3 +1,22 @@
+# inventory-server
+
+> Tool lending server, api for inventory-app
+
+#### Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve at localhost:9080
+npm run start
+
+```
+
+---
+
+This project was inspired by [Michael Herman](http://mherman.org/blog/2015/10/22/node-postgres-sequelize/#.VijvshNViko)
+
 ## A Simple Server with Node.js Express
 
 This is a simple skeleton Express server project that works on any of the [resin.io][resin-link] supported devices.
