@@ -4,6 +4,7 @@
 # Note the node:slim image doesn't have node-gyp
 FROM resin/%%RESIN_MACHINE_NAME%%-node:8
 EXPOSE 3000
+EXPOSE 5432
 
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
@@ -11,7 +12,7 @@ EXPOSE 3000
 #    alsa-utils libasound2-dev && \
 #    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/pgsql.list
+RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
 RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
     postgresql-9.4 && \
@@ -32,6 +33,24 @@ COPY . ./
 
 # Enable systemd init system in container
 ENV INITSYSTEM on
+
+# Change postgres user password
+# RUN echo -e "dzer38\ndzer38" | passwd postgres
+# RUN su - postgres
+# RUN psql -c "ALTER USER postgres WITH PASSWORD 'dzer38';"
+# RUN psql -c "CREATE DATABASE inventory_prod;"
+# RUN psql -c "GRANT ALL PRIVILEGES ON DATABASE inventory_prod TO postgres"
+# RUN psql -c "CREATE DATABASE inventory_test;"
+# RUN psql -c "GRANT ALL PRIVILEGES ON DATABASE inventory_test TO postgres"
+# RUN psql -c "CREATE DATABASE inventory_dev;"
+# RUN psql -c "GRANT ALL PRIVILEGES ON DATABASE inventory_dev TO postgres"
+# RUN exit
+
+# Init DB content
+# RUN node init/init.js drop
+# RUN node init/init.js sync
+# RUN node init/init.js inventory 100
+# RUN node init/init.js users 100
 
 # server.js will run when container starts up on the device
 CMD ["npm", "run", "start"]
