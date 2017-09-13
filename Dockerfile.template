@@ -13,10 +13,11 @@ RUN apt-get update && apt-get install -yq \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Adjust PostgreSQL configuration so that remote connections to the database are possible.
-RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
+RUN echo "host all  all    0.0.0.0/0  ident" >> /etc/postgresql/9.4/main/pg_hba.conf
 # And add listen_addresses to postgresql.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
-
+RUN echo "*:*:*:postgres:dzer38" > /var/lib/postgresql/.pgpass
+RUN chmod 600 /var/lib/postgresql/.pgpass
 # Start PostgreSQL
 RUN /etc/init.d/postgresql start
 
@@ -25,14 +26,6 @@ EXPOSE 5432
 
 # Add VOLUMEs to allow backup of config, logs and databases
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
-
-# Init PostgreSQL db
-# USER postgres
-# RUN psql -c "ALTER USER postgres WITH PASSWORD 'dzer38';"
-# RUN psql -c "CREATE USER inventory WITH SUPERUSER PASSWORD 'inventory';"
-# RUN createdb -O inventory inventory_dev
-# RUN createdb -O inventory inventory_test
-# RUN createdb -O inventory inventory_prod
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
@@ -49,6 +42,14 @@ COPY . ./
 
 # Enable systemd init system in container
 ENV INITSYSTEM on
+
+# Init PostgreSQL db
+# USER postgres
+# RUN psql -w -c "CREATE USER inventory WITH SUPERUSER PASSWORD 'inventory';"
+# RUN createdb -O inventory inventory_dev
+# RUN createdb -O inventory inventory_test
+# RUN createdb -O inventory inventory_prod
+# USER root
 
 # server.js will run when container starts up on the device
 CMD ["npm", "run", "start"]
