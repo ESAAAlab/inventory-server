@@ -4,7 +4,7 @@
     "password": "inventory",
     "database": "inventory_dev",
     "port": 5432,
-    "host": "192.168.0.14",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
@@ -12,7 +12,7 @@
     "password": "inventory",
     "database": "inventory_test",
     "port": 5432,
-    "host": "192.168.0.14",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
@@ -20,7 +20,7 @@
     "password": "inventory",
     "database": "inventory_prod",
     "port": 5432,
-    "host": "192.168.0.14",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }
