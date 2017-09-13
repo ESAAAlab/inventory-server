@@ -17,10 +17,10 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.co
 # And add listen_addresses to postgresql.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 USER postgres
-RUN echo "*:*:*:postgres:dzer38" > ~/.pgpass
+RUN echo "*:*:*:postgres:password" > ~/.pgpass
 RUN chmod 0600 ~/.pgpass
 USER root
-RUN echo "*:*:*:postgres:dzer38" > ~/.pgpass
+RUN echo "*:*:*:postgres:password" > ~/.pgpass
 RUN chmod 0600 ~/.pgpass
 # Start PostgreSQL
 RUN /etc/init.d/postgresql start

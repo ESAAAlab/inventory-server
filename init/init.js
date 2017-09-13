@@ -20,7 +20,7 @@ switch (myArgs[0]) {
 
 /*
 su - postgres
-psql -c "ALTER USER postgres PASSWORD 'dzer38'"";
+psql -c "ALTER USER postgres PASSWORD 'password'";
 
 Then
 
