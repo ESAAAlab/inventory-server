@@ -9,6 +9,7 @@ EXPOSE 3000
 RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
 RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
+    avahi-daemon avahi-discover libnss-mdns \
     postgresql-9.4 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -46,8 +47,6 @@ COPY . ./
 
 # Enable systemd init system in container
 ENV INITSYSTEM on
-
-CMD ["bash", "start.sh"]
 
 # server.js will run when container starts up on the device
 CMD ["npm", "run", "start"]
