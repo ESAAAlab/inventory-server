@@ -30,7 +30,13 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "request": "^2.81.0",
+    "sequelize-fixtures": "^0.5.6",
+    "throttled-request": "^0.1.1",
+    "json-query": "^2.2.2",
+    "md5": "^2.2.1",
+    "mockaroo": "^0.1.7"
   },
   "devDependencies": {
     "apidoc": "^0.17.6",

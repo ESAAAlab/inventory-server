@@ -1,24 +1,26 @@
 {
   "development": {
-    "username": "melka",
-    "password": null,
-    "database": "ESAAA_dev",
+    "username": "inventory",
+    "password": "inventory",
+    "database": "inventory_dev",
     "port": 5432,
-    "host": "localhost",
+    "host": "192.168.0.14",
     "dialect": "postgres"
   },
   "test": {
-    "username": "melka",
-    "password": null,
-    "database": "ESAAA_dev",
-    "host": "localhost",
+    "username": "inventory",
+    "password": "inventory",
+    "database": "inventory_test",
+    "port": 5432,
+    "host": "192.168.0.14",
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": null,
-    "database": "postgres",
-    "host": "db",
+    "username": "inventory",
+    "password": "inventory",
+    "database": "inventory_prod",
+    "port": 5432,
+    "host": "192.168.0.14",
     "dialect": "postgres"
   }
 }
