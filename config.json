@@ -4,18 +4,26 @@
     "password": "inventory",
     "database": "inventory_dev",
     "port": 5432,
-    "host": "localhost",
+    "host": "InventoryServer.local",
     "dialect": "postgres"
   },
-  "test": {
+  "production": {
     "username": "inventory",
     "password": "inventory",
-    "database": "inventory_test",
+    "database": "inventory_prod",
+    "port": 5432,
+    "host": "InventoryServer.local",
+    "dialect": "postgres"
+  },
+  "development_server": {
+    "username": "inventory",
+    "password": "inventory",
+    "database": "inventory_dev",
     "port": 5432,
     "host": "localhost",
     "dialect": "postgres"
   },
-  "production": {
+  "production_server": {
     "username": "inventory",
     "password": "inventory",
     "database": "inventory_prod",
