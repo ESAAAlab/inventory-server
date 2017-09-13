@@ -6,12 +6,8 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:8
 EXPOSE 3000
 
 
-# use apt-get if you need to install dependencies,
-# for instance if you need ALSA sound utils, just uncomment the lines below.
-#RUN apt-get update && apt-get install -yq \
-#    alsa-utils libasound2-dev && \
-#    apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install PostgreSQL
 RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
 RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
@@ -34,6 +30,7 @@ COPY . ./
 # Enable systemd init system in container
 ENV INITSYSTEM on
 
+# Init postgres db
 USER postgres
 RUN psql -c "ALTER USER postgres WITH PASSWORD 'dzer38';" &&\
 RUN psql -c "CREATE USER inventory WITH SUPERUSER PASSWORD 'inventory';" &&\
@@ -47,8 +44,10 @@ RUN echo "host all  inventory    192.168.0.1/16  md5" >> /etc/postgresql/9.4/mai
 # And add listen_addresses to postgresql.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 
+# Expose the PostgreSQL port
 EXPOSE 5432
 
+# Add VOLUMEs to allow backup of config, logs and databases
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 # server.js will run when container starts up on the device
