@@ -7,14 +7,18 @@
   "author": "Kamel Makhloufi",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3000 ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www",
-    "watch": "PORT=3000 ./node_modules/nodemon/bin/nodemon.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www --delay 3000ms"
+    "start": "PORT=3000 WEBAPP=3050 ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www",
+    "watch": "PORT=3000 WEBAPP=3050 ./node_modules/nodemon/bin/nodemon.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www --delay 3000ms"
   },
   "apidoc": {
     "title": "Inventory management API documentation",
     "url": "/api/v1"
   },
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
@@ -22,21 +26,16 @@
     "express": "^4.15.2",
     "json-query": "^2.2.2",
     "md5": "^2.2.1",
+    "mockaroo": "^0.1.7",
     "morgan": "^1.8.1",
     "pg": "^6.1.5",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.30.4",
-    "serve-favicon": "^2.4.2",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-0": "^6.24.1",
     "request": "^2.81.0",
+    "sequelize": "^3.30.4",
     "sequelize-fixtures": "^0.5.6",
-    "throttled-request": "^0.1.1",
-    "json-query": "^2.2.2",
-    "md5": "^2.2.1",
-    "mockaroo": "^0.1.7"
+    "serve-favicon": "^2.4.2",
+    "serve-static": "^1.12.4",
+    "throttled-request": "^0.1.1"
   },
   "devDependencies": {
     "apidoc": "^0.17.6",

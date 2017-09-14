@@ -15,7 +15,7 @@
     "host": "c8ba080.local",
     "dialect": "postgres"
   },
-  "development_server": {
+  "development_local": {
     "username": "inventory",
     "password": "inventory",
     "database": "inventory_dev",
@@ -23,7 +23,7 @@
     "host": "localhost",
     "dialect": "postgres"
   },
-  "production_server": {
+  "production_local": {
     "username": "inventory",
     "password": "inventory",
     "database": "inventory_prod",
