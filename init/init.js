@@ -20,15 +20,9 @@ switch (myArgs[0]) {
 
 /*
 su - postgres
-psql -c "ALTER USER postgres PASSWORD 'password'";
-
-Then
-
-CREATE USER inventory WITH PASSWORD 'inventory';
-CREATE DATABASE inventory_dev;
-CREATE DATABASE inventory_test;
-CREATE DATABASE inventory_prod;
-GRANT ALL PRIVILEGES ON DATABASE inventory_dev to inventory;
-GRANT ALL PRIVILEGES ON DATABASE inventory_test to inventory;
-GRANT ALL PRIVILEGES ON DATABASE inventory_prod to inventory;
+psql -c "ALTER USER postgres PASSWORD 'password';"
+psql -c "CREATE USER inventory WITH PASSWORD 'inventory';"
+psql -c "CREATE DATABASE inventory_dev;"
+psql -c "CREATE DATABASE inventory_prod;"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE inventory_dev, inventory_prod to inventory;"
  */

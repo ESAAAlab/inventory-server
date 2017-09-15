@@ -46,7 +46,7 @@ COPY . ./
 # Enable systemd init system in container
 ENV INITSYSTEM on
 
-RUN chmod +x init.sh
+RUN chmod +x initDB.sh
 
 # server.js will run when container starts up on the device
-CMD ["init.sh"]
+CMD ["npm","run","start"]
