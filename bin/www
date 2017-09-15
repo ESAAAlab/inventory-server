@@ -10,12 +10,12 @@ var debug = require('debug')('_example:server')
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '3000')
+var port = normalizePort(process.env.API_PORT || '3000')
 app.set('port', port)
 
 
 /* define webapp server and port */
-var webappPort = normalizePort(process.env.WEBAPP || '3050')
+var webappPort = normalizePort(process.env.WEBAPP_PORT || '3050')
 
 var webapp = express()
 var serveStatic = require('serve-static')

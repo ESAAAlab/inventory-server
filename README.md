@@ -13,6 +13,13 @@ npm run start
 
 ```
 
+#### Environnement variables needed
+API_PORT : default 3000
+WEBAPP_PORT : default 3050
+NODE_ENV: development, development_local, production, production_local
+INVENTORY_BASE_URL_DEV : API base url in the form http://<localhost>:<api_port>/api/v1
+INVENTORY_BASE_URL_PROD : API base url in the form http://<localhost>:<api_port>/api/v1
+
 ---
 
 This project was inspired by [Michael Herman](http://mherman.org/blog/2015/10/22/node-postgres-sequelize/#.VijvshNViko)

@@ -7,8 +7,8 @@
   "author": "Kamel Makhloufi",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3000 WEBAPP=3050 ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www",
-    "watch": "PORT=3000 WEBAPP=3050 ./node_modules/nodemon/bin/nodemon.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www --delay 3000ms"
+    "start": "./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www",
+    "watch": "./node_modules/nodemon/bin/nodemon.js --exec ./node_modules/babel-cli/bin/babel-node.js --presets env,stage-0 ./bin/www --delay 3000ms"
   },
   "apidoc": {
     "title": "Inventory management API documentation",
