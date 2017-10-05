@@ -8,7 +8,7 @@ EXPOSE 3050
 
 # Install PostgreSQL
 RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
-RUN mkdir /usr/share/man/man7
+# RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
     avahi-daemon avahi-discover libnss-mdns \
     postgresql-9.4 && \
