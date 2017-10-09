@@ -6,6 +6,7 @@ su - postgres -c 'mkdir /data/pgsql/main'
 su - postgres -c '/usr/lib/postgresql/9.4/bin/initdb -D /data/pgsql/main'
 /etc/init.d/postgresql restart
 
+#Change passwords and user for your configuration
 #su - postgres
 #psql -c "ALTER USER postgres PASSWORD 'password';"
 #psql -c "CREATE USER inventory WITH PASSWORD 'inventory';"

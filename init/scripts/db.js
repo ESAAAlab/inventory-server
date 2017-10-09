@@ -36,7 +36,7 @@ module.exports = {
     console.log('Generating ' + nb + ' random inventory items')
 
     var client = new Mockaroo.Client({
-      apiKey: '173c4280' // see http://mockaroo.com/api/docs to get your api key
+      apiKey: 'xxxxxx' // see http://mockaroo.com/api/docs to get your api key
     })
 
     client.generate({
@@ -134,7 +134,7 @@ module.exports = {
           stockStep: item.stockStep,
           stockUnit: item.stockUnit,
           stockMax: item.stockMax,
-          stockAvailable: item.stockAvailable,
+          stockAvailable: item.stockMax,
           itemCategoryId: item.itemCategoryId,
           itemLocationId: item.itemLocationId
         }).then(function (sqlitem) {
