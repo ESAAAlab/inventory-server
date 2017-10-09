@@ -8,16 +8,18 @@ EXPOSE 3050
 
 # Install PostgreSQL
 RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
-# RUN mkdir /usr/share/man/man7
+RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
-    avahi-daemon avahi-discover libnss-mdns \
     postgresql-9.4 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Adjust PostgreSQL configuration so that remote connections to the database are possible.
+# Allow postgres user without password from backup computer
+RUN echo "host all  postgres    192.168.0.110/32  trust" >> /etc/postgresql/9.4/main/pg_hba.conf
+# Force other connections with password
 RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
 RUN echo "host all  all    fe80::/10  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
-# And add listen_addresses to postgresql.conf
+# Add listen_addresses to postgresql.conf
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 RUN echo "data_directory = '/data/pgsql/main'" >> /etc/postgresql/9.4/main/postgresql.conf
 USER postgres
