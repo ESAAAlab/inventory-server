@@ -1,4 +1,4 @@
-# inventory-app
+# inventory-server
 
 Tool lending server, backend to [inventory-app](https://github.com/ESAAAlab/inventory-app)
 
