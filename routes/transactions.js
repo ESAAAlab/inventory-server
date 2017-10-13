@@ -31,7 +31,8 @@ module.exports = function (app) {
       include: [
         {model: models.item, as: 'transactions', where: {id: req.params.id}, required: true},
         {model: models.user, as: 'lendings'}
-      ]
+      ],
+      order: [['startDate', 'DESC']]
     }).then(function (sqlResult) {
       res.json(sqlResult)
     })
@@ -46,6 +47,25 @@ module.exports = function (app) {
   app.get('/api/v1/transaction/latest/:isEnded/:limit', function (req, res) {
     models.transaction.findAll({
       where: {ended: req.params.isEnded},
+      include: [
+        {model: models.user, as: 'lendings', required: true},
+        {model: models.item, as: 'transactions', required: true}
+      ],
+      order: [['createdAt', 'DESC']],
+      limit: req.params.limit
+    }).then(function (sqlResult) {
+      res.json(sqlResult)
+    })
+  })
+
+  /**
+   * @api {get} /transaction/latest/:limit Get latest Transactions
+   * @apiGroup Transaction
+   * @apiParam {Number} limit Number of items returned
+   * @apiSuccess {json} Transaction array with User & Item included.
+   */
+  app.get('/api/v1/transaction/latest/:limit', function (req, res) {
+    models.transaction.findAll({
       include: [
         {model: models.user, as: 'lendings', required: true},
         {model: models.item, as: 'transactions', required: true}

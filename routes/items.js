@@ -47,7 +47,12 @@ module.exports = function (app) {
    */
   app.get('/api/v1/inventory/search/:str', function (req, res) {
     models.item.findAll({
-      where: {name: {$ilike: req.params.str + '%'}},
+      where: {
+        $or: {
+          name: {$ilike: req.params.str + '%'},
+          barcode: {$ilike: '%' + req.params.str}
+        }
+      },
       include: [
         {model: models.transaction, as: 'stockCounts'},
         {model: models.transaction, as: 'lendings'}

@@ -7,7 +7,7 @@
       brand: DataTypes.STRING,
       serialNumber: DataTypes.STRING,
       materialCode: DataTypes.STRING,
-      barcode: DataTypes.STRING,
+      barcode: { type: DataTypes.STRING, unique: true },
       inventoryNumber: DataTypes.STRING,
       acquisitionPrice: DataTypes.DOUBLE,
       acquisitionDate: DataTypes.DATE,
