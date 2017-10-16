@@ -1,5 +1,6 @@
 import models from '../models/index'
-import md5 from 'md5'
+import utils from '../utils'
+import Sequelize from 'sequelize'
 
 module.exports = function (app) {
   /**
@@ -10,7 +11,7 @@ module.exports = function (app) {
   app.get('/api/v1/users', function (req, res) {
     models.user.findAll({
       include: [
-        {model: models.userType, where: {description: 'Étudiant'}},
+        {model: models.userType},
         {model: models.studentYear},
         {model: models.document, as: 'pictures', where: {type: 'userProfilePic'}},
         {model: models.transaction, as: 'lendings', where: {type: 'lending'}, required: false}
@@ -29,23 +30,41 @@ module.exports = function (app) {
    */
   app.get('/api/v1/user/name/:str', function (req, res) {
     models.user.findAll({
-      where: {
-        $or: {
-          lastName: {$ilike: req.params.str + '%'},
-          firstName: {$ilike: req.params.str + '%'},
-          barcode: {$ilike: '%' + req.params.str}
-        }
-      },
-      order: [['lastName', 'ASC']],
+      where:
+        Sequelize.or(
+          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('lastName')), {$ilike: utils.removeAccents(req.params.str) + '%'}),
+          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('firstName')), {$ilike: utils.removeAccents(req.params.str) + '%'}),
+          Sequelize.where(Sequelize.col('barcode'), {$ilike: '%' + req.params.str})
+        ),
       include: [
-        {model: models.userType, where: {description: 'Étudiant'}},
+        {model: models.userType},
         {model: models.studentYear},
         {model: models.document, as: 'pictures', where: {type: 'userProfilePic'}, required: false},
         {model: models.transaction, as: 'lendings', where: {type: 'lending'}, required: false}
-      ]
+      ],
+      order: [['lastName', 'ASC']]
     }).then(function (sqlResult) {
       res.json(sqlResult)
     })
+
+    // models.user.findAll({
+    //   where: {
+    //     $or: {
+    //       lastName: {$ilike: req.params.str + '%'},
+    //       firstName: {$ilike: req.params.str + '%'},
+    //       barcode: {$ilike: '%' + req.params.str}
+    //     }
+    //   },
+    //   order: [['lastName', 'ASC']],
+    //   include: [
+    //     {model: models.userType, where: {description: 'Étudiant'}},
+    //     {model: models.studentYear},
+    //     {model: models.document, as: 'pictures', where: {type: 'userProfilePic'}, required: false},
+    //     {model: models.transaction, as: 'lendings', where: {type: 'lending'}, required: false}
+    //   ]
+    // }).then(function (sqlResult) {
+    //   res.json(sqlResult)
+    // })
   })
 
   /**
@@ -58,7 +77,7 @@ module.exports = function (app) {
     models.user.findOne({
       where: {id: req.params.id},
       include: [
-        {model: models.userType, where: {description: 'Étudiant'}},
+        {model: models.userType},
         {model: models.studentYear},
         {model: models.document, as: 'pictures', where: {type: 'userProfilePic'}, required: false},
         {model: models.transaction, as: 'lendings', where: {type: 'lending', ended: false}, required: false}
@@ -79,7 +98,7 @@ module.exports = function (app) {
    */
   app.post('/api/v1/user', function (req, res) {
     models.user.create({
-      barcode: md5(req.body.firstName + req.body.lastName),
+      barcode: req.body.barcode,
       title: req.body.title,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -120,7 +139,7 @@ module.exports = function (app) {
     }).then(function (item) {
       if (item) {
         item.updateAttributes({
-          barcode: md5(req.body.firstName + req.body.lastName),
+          barcode: req.body.barcode,
           title: req.body.title,
           firstName: req.body.firstName,
           lastName: req.body.lastName,
@@ -132,12 +151,12 @@ module.exports = function (app) {
           addressCity: req.body.city,
           addressState: req.body.state,
           addressPostcode: req.body.postcode,
-          loginUsername: req.body.username,
-          loginPassword: req.body.password, // FOR DEVELOPMENT ONLY, MUST BE REMOVED IN PRODUCTION
-          loginSalt: req.body.salt,
-          loginMD5: req.body.md5,
-          loginSHA1: req.body.sha1,
-          loginSHA256: req.body.sha256,
+          loginUsername: req.body.loginUsername,
+          loginPassword: req.body.loginPassword, // FOR DEVELOPMENT ONLY, MUST BE REMOVED IN PRODUCTION
+          loginSalt: req.body.loginSalt,
+          loginMD5: req.body.loginMD5,
+          loginSHA1: req.body.loginSHA1,
+          loginSHA256: req.body.loginSHA256,
           userTypeId: req.body.userTypeId,
           studentYearId: req.body.studentYearId
         }).then(function (sqlResult) {

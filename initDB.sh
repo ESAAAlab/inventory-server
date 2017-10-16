@@ -13,3 +13,5 @@ su - postgres -c '/usr/lib/postgresql/9.4/bin/initdb -D /data/pgsql/main'
 #psql -c "CREATE DATABASE inventory_dev;"
 #psql -c "CREATE DATABASE inventory_prod;"
 #psql -c "GRANT ALL PRIVILEGES ON DATABASE inventory_dev, inventory_prod to inventory;"
+#psql -d inventory_dev -c "CREATE EXTENSION unaccent;"
+#psql -d inventory_prod -c "CREATE EXTENSION unaccent;"

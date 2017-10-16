@@ -1,4 +1,6 @@
 import models from '../models/index'
+import utils from '../utils'
+import Sequelize from 'sequelize'
 
 module.exports = function (app) {
   /**
@@ -22,13 +24,13 @@ module.exports = function (app) {
    */
   app.get('/api/v1/inventory/search/available/:str', function (req, res) {
     models.item.findAll({
-      where: {
-        $or: {
-          name: {$ilike: req.params.str + '%'},
-          barcode: {$ilike: '%' + req.params.str}
-        },
-        stockAvailable: {$gt: 0}
-      },
+      where: Sequelize.and(
+        Sequelize.or(
+          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('name')), {$ilike: utils.removeAccents(req.params.str) + '%'}),
+          Sequelize.where(Sequelize.col('barcode'), {$ilike: '%' + req.params.str})
+        ),
+        Sequelize.where(Sequelize.col('stockAvailable'), {$gt: 0})
+      ),
       include: [
         {model: models.transaction, as: 'stockCounts'},
         {model: models.transaction, as: 'lendings'}
@@ -47,12 +49,11 @@ module.exports = function (app) {
    */
   app.get('/api/v1/inventory/search/:str', function (req, res) {
     models.item.findAll({
-      where: {
-        $or: {
-          name: {$ilike: req.params.str + '%'},
-          barcode: {$ilike: '%' + req.params.str}
-        }
-      },
+      where:
+        Sequelize.or(
+          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('name')), {$ilike: utils.removeAccents(req.params.str) + '%'}),
+          Sequelize.where(Sequelize.col('barcode'), {$ilike: '%' + req.params.str})
+        ),
       include: [
         {model: models.transaction, as: 'stockCounts'},
         {model: models.transaction, as: 'lendings'}
