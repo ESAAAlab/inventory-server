@@ -10,7 +10,7 @@ EXPOSE 3050
 RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
 RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
-    postgresql-9.4 && \
+    postgresql-9.4 postgresql-contrib-9.4 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Adjust PostgreSQL configuration so that remote connections to the database are possible.
