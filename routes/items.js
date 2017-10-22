@@ -26,7 +26,7 @@ module.exports = function (app) {
     models.item.findAll({
       where: Sequelize.and(
         Sequelize.or(
-          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('name')), {$ilike: utils.removeAccents(req.params.str) + '%'}),
+          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('name')), {$ilike: '%' + utils.removeAccents(req.params.str) + '%'}),
           Sequelize.where(Sequelize.col('barcode'), {$ilike: '%' + req.params.str})
         ),
         Sequelize.where(Sequelize.col('stockAvailable'), {$gt: 0})
@@ -51,7 +51,7 @@ module.exports = function (app) {
     models.item.findAll({
       where:
         Sequelize.or(
-          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('name')), {$ilike: utils.removeAccents(req.params.str) + '%'}),
+          Sequelize.where(Sequelize.fn('unaccent', Sequelize.col('name')), {$ilike: '%' + utils.removeAccents(req.params.str) + '%'}),
           Sequelize.where(Sequelize.col('barcode'), {$ilike: '%' + req.params.str})
         ),
       include: [
@@ -95,6 +95,7 @@ module.exports = function (app) {
       name: req.body.name,
       model: req.body.model,
       brand: req.body.brand,
+      barcode: req.body.barcode,
       serialNumber: req.body.serialNumber,
       inventoryNumber: req.body.inventoryNumber,
       acquisitionPrice: req.body.acquisitionPrice,
@@ -121,6 +122,7 @@ module.exports = function (app) {
    * @apiSuccess {json} Item with transactions
    */
   app.put('/api/v1/inventory/:id', function (req, res) {
+    console.log(req.body.name)
     models.item.find({
       where: {
         id: req.params.id
@@ -131,6 +133,7 @@ module.exports = function (app) {
           name: req.body.name,
           model: req.body.model,
           brand: req.body.brand,
+          barcode: req.body.barcode,
           serialNumber: req.body.serialNumber,
           inventoryNumber: req.body.inventoryNumber,
           acquisitionPrice: req.body.acquisitionPrice,
