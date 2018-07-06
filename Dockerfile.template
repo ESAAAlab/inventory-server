@@ -6,22 +6,24 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:8
 EXPOSE 3000
 EXPOSE 3050
 
-# Install PostgreSQL
-RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
+# Install PostgreSQL 9.6
+#RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/pgsql.list
+RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main' >> /etc/apt/sources.list.d/postgresql.list
+RUN wget --no-check-certificate -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O- | apt-key add -
 RUN mkdir /usr/share/man/man7
 RUN apt-get update && apt-get install -yq \
-    postgresql-9.4 postgresql-contrib-9.4 && \
+    postgresql-9.6 postgresql-contrib-9.6 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Adjust PostgreSQL configuration so that remote connections to the database are possible.
 # Allow postgres user without password from backup computer, change IP to suit your network
-RUN echo "host all  postgres    192.168.0.110/32  trust" >> /etc/postgresql/9.4/main/pg_hba.conf
+RUN echo "host all  postgres    192.168.0.110/32  trust" >> /etc/postgresql/9.6/main/pg_hba.conf
 # Force other connections with password
-RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
-RUN echo "host all  all    fe80::/10  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.6/main/pg_hba.conf
+RUN echo "host all  all    fe80::/10  md5" >> /etc/postgresql/9.6/main/pg_hba.conf
 # Add listen_addresses to postgresql.conf
-RUN echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
-RUN echo "data_directory = '/data/pgsql/main'" >> /etc/postgresql/9.4/main/postgresql.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.6/main/postgresql.conf
+RUN echo "data_directory = '/data/pgsql/main'" >> /etc/postgresql/9.6/main/postgresql.conf
 # Add password for postgres user, change 'password' before pushin to resin
 USER postgres
 RUN echo "*:*:*:postgres:password" > ~/.pgpass

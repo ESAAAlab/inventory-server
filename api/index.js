@@ -2,9 +2,11 @@
  * Module dependencies.
  */
 
-import app from '../index'
-import http from 'http'
-import express from 'express'
+var app = require('../index')
+var fs = require('fs')
+var http = require('http')
+var https = require('https')
+var express = require('express')
 var debug = require('debug')('_example:server')
 
 /**

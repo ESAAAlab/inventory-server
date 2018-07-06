@@ -10,3 +10,5 @@ node_modules/
 #OSX hidden metadata file
 .DS_Store
 thumbs.db
+
+yarn*

@@ -21,7 +21,8 @@
     "database": "inventory_dev",
     "port": 5432,
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "production_local": {
     "username": "inventory",
